@@ -76,6 +76,22 @@
 		<system>None</system>
 	</ciManagement>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jmh.version>1.19</jmh.version>
+		<javac.target>1.8</javac.target>
+		<uberjar.name>benchmarks</uberjar.name>
+		<scijava.jvm.version>1.8</scijava.jvm.version>
+		<license.licenseName>bsd_2</license.licenseName>
+		<license.copyrightOwners>Board of Regents of the University of
+Wisconsin-Madison, University of Konstanz and Brian Northan.</license.copyrightOwners>
+		<license.projectName>ImageJ software for multidimensional image processing and analysis.</license.projectName>
+	</properties>
+
+	<prerequisites>
+		<maven>3.0</maven>
+	</prerequisites>
+
 	<repositories>
 		<repository>
 			<id>imagej.public</id>
@@ -96,6 +112,7 @@
 			<version>${jmh.version}</version>
 			<scope>provided</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>net.imagej</groupId>
 			<artifactId>imagej-common</artifactId>
@@ -107,19 +124,13 @@
 			<groupId>org.scijava</groupId>
 			<artifactId>scijava-common</artifactId>
 		</dependency>
-	</dependencies>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jmh.version>1.19</jmh.version>
-		<uberjar.name>benchmarks</uberjar.name>
-		<scijava.jvm.version>1.8</scijava.jvm.version>
-		<license.licenseName>bsd_2</license.licenseName>
-		<license.copyrightOwners>Board of Regents of the University of
-Wisconsin-Madison, Broad Institute of MIT and Harvard, and Max Planck
-Institute of Molecular Cell Biology and Genetics.</license.copyrightOwners>
-		<license.projectName>ImageJ software for multidimensional image processing and analysis.</license.projectName>
-	</properties>
+		<!-- Ops dependency -->
+		<dependency>
+			<groupId>net.imagej</groupId>
+			<artifactId>imagej-ops</artifactId>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
