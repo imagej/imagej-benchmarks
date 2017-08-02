@@ -21,10 +21,7 @@
 
 package net.imagej.table;
 
-import io.scif.io.ByteArrayHandle;
-import io.scif.services.DatasetIOService;
-import io.scif.services.LocationService;
-
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -39,14 +36,19 @@ import org.openjdk.jmh.annotations.OutputTimeUnit;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.annotations.TearDown;
 import org.openjdk.jmh.annotations.Warmup;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 import org.scijava.Context;
+import org.scijava.io.DataHandle;
+import org.scijava.io.DataHandleService;
+import org.scijava.io.FileLocation;
 import org.scijava.io.IOPlugin;
 import org.scijava.io.IOService;
+import org.scijava.io.Location;
 import org.scijava.plugin.Parameter;
 import org.scijava.util.MersenneTwisterFast;
 
@@ -57,14 +59,17 @@ import org.scijava.util.MersenneTwisterFast;
 public class DefaultTableIOPluginBenchmark extends AbstractBenchmark {
 
 	@Parameter
-	private LocationService locationService;
+	private DataHandleService dataHandleService;
 
 	@Parameter
 	private IOService ioService;
 
+	/** Reference to file for cleaning up after the benchmark. */
+	private Location location;
+
 	@Override
 	protected Context createContext() {
-		return new Context(LocationService.class, IOService.class, DatasetIOService.class);
+		return new Context(IOService.class, DataHandleService.class);
 	}
 
 	@Setup
@@ -81,8 +86,23 @@ public class DefaultTableIOPluginBenchmark extends AbstractBenchmark {
 			}
 			sb.append(String.format("%.6f\r\n", r.nextFloat()));
 		}
-		final ByteArrayHandle bah = new ByteArrayHandle(sb.toString().getBytes());
-		locationService.mapFile("large.csv", bah);
+
+		location = new FileLocation("large.csv");
+		final DataHandle<? extends Location> handle = dataHandleService.create(location);
+		try {
+			handle.write(sb.toString().getBytes());
+		}
+		catch (IOException exc) {
+			exc.printStackTrace();
+		}
+	}
+
+	@Override
+	@TearDown
+	public synchronized void cleanUp() {
+		new File(location.getURI()).delete();
+
+		super.cleanUp();
 	}
 
 	@Benchmark
