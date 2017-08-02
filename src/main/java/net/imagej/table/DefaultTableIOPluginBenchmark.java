@@ -107,8 +107,8 @@ public class DefaultTableIOPluginBenchmark extends AbstractBenchmark {
 
 	@Benchmark
 	@BenchmarkMode(Mode.AverageTime)
-	@Warmup(iterations = 10)
-	@Measurement(iterations = 20)
+	@Warmup(iterations = 5)
+	@Measurement(iterations = 10)
 	@OutputTimeUnit(TimeUnit.MILLISECONDS)
 	@Fork(value = 2)
 	public void openLarge() {
@@ -124,8 +124,8 @@ public class DefaultTableIOPluginBenchmark extends AbstractBenchmark {
 
 	public static void main(String[] args) throws RunnerException {
 		Options opt = new OptionsBuilder().include(
-			DefaultTableIOPluginBenchmark.class.getSimpleName()).warmupIterations(10)
-			.measurementIterations(20).forks(2).threads(1).build();
+			DefaultTableIOPluginBenchmark.class.getSimpleName()).warmupIterations(5)
+			.measurementIterations(10).forks(2).threads(1).build();
 
 		new Runner(opt).run();
 	}
