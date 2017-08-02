@@ -38,7 +38,7 @@ import org.scijava.log.LogService;
 import org.scijava.plugin.Parameter;
 
 /**
- * TODO Documentation
+ * Abstract base class for benchmarks.
  * 
  * @author Stefan Helfrich (University of Konstanz)
  */
