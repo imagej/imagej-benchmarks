@@ -121,9 +121,27 @@ public class DefaultTableIOPluginBenchmark extends AbstractBenchmark {
 	@Measurement(iterations = 10)
 	@OutputTimeUnit(TimeUnit.MILLISECONDS)
 	@Fork(value = 2)
-	public void openLarge() {
+	public void openLargeWithDefaultTableIOPlugin() {
 		final IOPlugin<GenericTable> tableIO = ioService.getInstance(
 			DefaultTableIOPlugin.class);
+		try {
+			tableIO.open("large.csv");
+		}
+		catch (IOException exc) {
+			exc.printStackTrace();
+		}
+	}
+
+	@Benchmark
+	@BenchmarkMode(Mode.AverageTime)
+	@Warmup(iterations = 5)
+	@Measurement(iterations = 10)
+	@OutputTimeUnit(TimeUnit.MILLISECONDS)
+	@Fork(value = 2)
+	public void openLargeWithCommonsCSVTableIOPlugin() {
+		@SuppressWarnings("rawtypes")
+		final IOPlugin<Table> tableIO = ioService.getInstance(
+			CommonsCSVTableIOPlugin.class);
 		try {
 			tableIO.open("large.csv");
 		}
