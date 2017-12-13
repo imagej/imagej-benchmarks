@@ -10,12 +10,12 @@
 		<relativePath />
 	</parent>
 
-	<artifactId>imagej-common-benchmarks</artifactId>
+	<artifactId>imagej-benchmarks</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>ImageJ Common Benchmarks</name>
-	<description>JMH-based benchmarks for imagej-common</description>
-	<url>http://github.com/stelfrich/imagej-common-benchmarks/</url>
+	<name>ImageJ Benchmarks</name>
+	<description>JMH-based benchmarks for projects of the imagej org</description>
+	<url>http://github.com/imagej/imagej-benchmarks/</url>
 	<inceptionYear>2017</inceptionYear>
 	<organization>
 		<name>ImageJ</name>
@@ -63,14 +63,14 @@
 	</mailingLists>
 
 	<scm>
-		<connection>scm:git:git://github.com/stelfrich/imagej-common-benchmarks</connection>
-		<developerConnection>scm:git:git@github.com:stelfrich/imagej-common-benchmarks</developerConnection>
+		<connection>scm:git:git://github.com/imagej/imagej-benchmarks</connection>
+		<developerConnection>scm:git:git@github.com:imagej/imagej-benchmarks</developerConnection>
 		<tag>HEAD</tag>
-		<url>https://github.com/stelfrich/imagej-common-benchmarks</url>
+		<url>https://github.com/imagej/imagej-benchmarks</url>
 	</scm>
 	<issueManagement>
 		<system>GitHub Issues</system>
-		<url>https://github.com/stelfrich/imagej-common-benchmarks</url>
+		<url>https://github.com/imagej/imagej-benchmarks</url>
 	</issueManagement>
 	<ciManagement>
 		<system>None</system>

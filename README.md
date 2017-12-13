@@ -1,6 +1,6 @@
-# imagej-common-benchmarks
+# imagej-benchmarks
 
-[JMH](http://openjdk.java.net/projects/code-tools/jmh/)-based benchmarks for [ImageJ Common](https://github.com/imagej/imagej-common).
+[JMH](http://openjdk.java.net/projects/code-tools/jmh/)-based benchmarks for [ImageJ](https://github.com/imagej/) projects.
 
 ## Execute
 
