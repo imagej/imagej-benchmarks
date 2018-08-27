@@ -113,18 +113,6 @@ Wisconsin-Madison and University of Konstanz.</license.copyrightOwners>
 			<scope>provided</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>net.imagej</groupId>
-			<artifactId>imagej-common</artifactId>
-			<version>0.23.1-SNAPSHOT</version>
-		</dependency>
-
-		<!-- Scijava dependencies -->
-		<dependency>
-			<groupId>org.scijava</groupId>
-			<artifactId>scijava-common</artifactId>
-		</dependency>
-
 		<!-- Ops dependency -->
 		<dependency>
 			<groupId>net.imagej</groupId>
